@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PC Components (Tanim)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white p-4 flex justify-between items-center">
+      <h1 class="text-lg font-bold">PC Components (Tanim)</h1>
+      <input
+        id="secretInput"
+        type="password"
+        placeholder="Enter code"
+        class="px-2 py-1 rounded text-black text-sm w-28"
+        autocomplete="off"
+      />
+    </nav>
+
+    <!-- Main -->
+    <main class="flex-1 p-6 space-y-10">
+      <!-- PC Components -->
+      <section>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">PC Components</h2>
+          <div id="pcTotal" class="px-4 py-2 border rounded text-gray-400">
+            Hidden
+          </div>
+        </div>
+        <div id="pcComponents" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="flex bg-white rounded-lg shadow overflow-hidden gap-5 p-2"
+          >
+            <div class="w-44">
+              <img
+                src="https://www.startech.com.bd/image/cache/catalog/casing/monarch/mystery-box-x5/mystery-box-x5-01-500x500.webp"
+                alt=""
+              />
+            </div>
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h1 class="font-bold text-xl">CPU:</h1>
+                <div class="">Hidden</div>
+              </div>
+              <p>Case Description</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Peripherals -->
+      <section>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">Peripherals</h2>
+          <div
+            id="peripheralsTotal"
+            class="px-4 py-2 border rounded text-gray-400"
+          >
+            Hidden
+          </div>
+        </div>
+        <div
+          id="peripherals"
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </section>
+    </main>
+
+    <script>
+      const secretCode = "7273";
+      const pcComponents = [
+        {
+          type: "CPU",
+          name: "AMD Ryzen 5 5600G Processor with Radeon Graphics",
+          price: 14800,
+          img: "https://www.startech.com.bd/image/cache/catalog/processor/amd/ryzen-5-5600g/ryzen-5-5600g-500x500.jpg",
+          link: "",
+        },
+        {
+          type: "Motherboard",
+          name: "MSI B450M-A PRO MAX II AMD AM4 Motherboard",
+          price: 8900,
+          img: "https://www.startech.com.bd/image/cache/catalog/motherboard/msi/b450m-a-pro-max-ii/b450m-a-pro-max-ii-01-500x500.webp",
+          link: "https://www.google.com/search?sca_esv=1001961491ba09a8&sxsrf=AE3TifOcVz2n4p0Dar7E-4LJ-k24lHKDDA:1759495754670&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOha3O1YqG67F0QIhAOFN_ob1aWGQOelbxvw0PKo40QtwvZMGAT8mh52EQduMaEwrkL_OWJKMRsfwjGjYSpRBlZ1JDaBjTRFJHK6nc3h7Df_ewEX8XvmvbWbC3KO9R3Wzz8-jDjRXDvvSfLP0DDBhoo8LSWAeOg&q=msi+b450m-a+pro+max+ii+amd+am4+motherboard&sa=X&sqi=2&ved=2ahUKEwjVpcO7iIiQAxVkR2wGHZ58FFgQtKgLegQIGBAB&biw=1536&bih=776&dpr=1.25",
+        },
+        {
+          type: "RAM",
+          name: "OCPC XT II DDR4 3200MHz 16GB Desktop RAM (black)",
+          price: 5000,
+          img: "https://www.startech.com.bd/image/cache/catalog/ram/ocpc/xt-ii-ddr4-3200-16gb/xt-ii-ddr4-3200-16gb-500x500.webp",
+          link: "https://www.google.com/search?sca_esv=1001961491ba09a8&sxsrf=AE3TifM8Dc88Lb9GdNGO5UnR9J-U_A1MbA:1759495860799&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOha3O1YqG67F0QIhAOFN_ob1aWGQOelbxvw0PKo40QtwvZMGAT8mh52EQduMaEwrkL_OWJKMRsfwjGjYSpRBlZ1JDaBjTRFJHK6nc3h7Df_ewEX8XvmvbWbC3KO9R3Wzz8-jDjRXDvvSfLP0DDBhoo8LSWAeOg&q=ocpc+xt+ii+ddr4+3200mhz+16gb+desktop+ram&sa=X&sqi=2&ved=2ahUKEwiq7JDuiIiQAxVcTWwGHan5Mb0QtKgLegQIFxAB&biw=1536&bih=776&dpr=1.25",
+        },
+        {
+          type: "Graphics Card",
+          name: "Zotac GAMING GeForce RTX 3050 Twin Edge OC 6GB GDDR6 Graphics Card",
+          price: 25900,
+          img: "https://www.startech.com.bd/image/cache/catalog/graphics-card/zotac/gaming-geforce-rtx-3050-twin-edge-oc-6gb/gaming-geforce-rtx-3050-twin-edge-oc-6gb-01-500x500.webp",
+          link: "",
+        },
+        {
+          type: "Storage (SSD)",
+          name: "XOC G300 512GB PCIe 3.0 NVMe SSD",
+          price: 4450,
+          img: "https://techlandbd.com/cache/images/uploads/products/P6252506002/cover_cache_optimize-50.webp",
+          link: "https://www.google.com/search?sca_esv=ea1d5f3fa4ef2f46&sxsrf=AE3TifM9Nhzb_SUdkaMTZQukcT-vcO2LHA:1759500664397&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOhYPURIv2wPgv_w_sE_0Sc6QqqU7k8cSQndc5mTXCIWHa5yWh8UZLeaMB2TzsL707pcnajOVzuG8nS7sxlcHlHT7piY8EJN1nt_1OxpO-4jRCM7y46MmzzMDHqGNST6xFea_Jb9OOjWE_EbrmKsB62WJGHF5nA&q=XOC+G300+512GB+PCIe+3.0+NVMe+SSD&sa=X&ved=2ahUKEwiIodXgmoiQAxXkSWwGHfk9N2AQtKgLegQIFhAB&biw=1536&bih=776&dpr=1.25",
+        },
+        {
+          type: "Power Supply",
+          name: "Pc Power Obsidian PS-O-500-B 500W Non Modular 80 Plus Bronze Power Supply (Black)",
+          price: 3300,
+          img: "https://techlandbd.com/cache/images/uploads/products/P3512506178/cover_cache_optimize-50.webp",
+          link: "",
+        },
+        {
+          type: "Casing",
+          name: "Value-Top TYPHOON F5 ATX Gaming Case (Black)",
+          price: 3450,
+          img: "https://techlandbd.com/cache/images/uploads/products/P1092506135/cover_cache_optimize-50.webp",
+          link: "https://www.google.com/search?sca_esv=1001961491ba09a8&sxsrf=AE3TifMsEROYv7jiYx7k45fTFJn8aecgBg:1759496739420&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOha3O1YqG67F0QIhAOFN_ob1xGdzU5Cnyn-oUzTul2B5TXRzAeIy3FI7wzggwHPeZE6A_YjAVf9uE0nNdQlAcGqqj5AFYH9gBj6Gco72idWfDSHyBqtc2Mn9Wkv0Fc0g3se9_tqrCpEpg1Mk49vFKkgil7s-SQ&q=Value-Top+TYPHOON+F5+ATX+Gaming+Case&sa=X&ved=2ahUKEwj3wYuRjIiQAxXCTWwGHfieHKAQtKgLegQIFxAB&biw=1536&bih=776&dpr=1.25",
+        },
+      ];
+
+      const peripherals = [
+        {
+          type: "......",
+          name: "......",
+          price: 0,
+          img: "https://via.placeholder.com/200x150?text=Monitor",
+        },
+      ];
+
+      function renderCards(containerId, items, showPrice) {
+        document.getElementById(containerId).innerHTML = items
+          .map(
+            (item) => `
+					<div class="bg-white rounded-lg shadow overflow-hidden flex flex-col">
+						<div class="w-full h-48 flex items-center justify-center bg-gray-50">
+							<img src="${item.img}" alt="${item.type}" class="max-h-44 object-contain">
+						</div>
+
+						<div class="flex justify-between items-center p-4">
+							<div>
+								<p class="text-xl font-bold mb-2 text-gray-500">${item.type} :</p>
+								<a href="${item.link}" target="_blank" class="font-semibold text-blue-500">${
+              item.name
+            }</a>
+							</div>
+							<span class="px-3 py-1 border rounded ${
+                showPrice ? "text-green-700 font-bold" : "text-gray-400"
+              }">
+								${showPrice ? `${item.price}` : "Hidden"}
+							</span>
+						</div>
+					</div>
+				`
+          )
+          .join("");
+      }
+
+      function renderTotal(containerId, items, showPrice) {
+        const totalDiv = document.getElementById(containerId);
+        if (showPrice) {
+          totalDiv.textContent =
+            "" + items.reduce((acc, i) => acc + i.price, 0);
+          totalDiv.className =
+            "px-4 py-2 border rounded text-green-700 font-bold";
+        } else {
+          totalDiv.textContent = "Hidden";
+          totalDiv.className = "px-4 py-2 border rounded text-gray-400";
+        }
+      }
+
+      function updateView(unlocked) {
+        renderCards("pcComponents", pcComponents, unlocked);
+        renderCards("peripherals", peripherals, unlocked);
+        renderTotal("pcTotal", pcComponents, unlocked);
+        renderTotal("peripheralsTotal", peripherals, unlocked);
+      }
+
+      updateView(false);
+
+      document.getElementById("secretInput").addEventListener("input", (e) => {
+        updateView(e.target.value === secretCode);
+      });
+    </script>
+  </body>
+</html>
